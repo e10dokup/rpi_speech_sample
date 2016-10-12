@@ -11,8 +11,7 @@ class Speech
 
     request_body = {
         'text'=>text,
-        'speaker'=>'hikari',
-        'emotion'=>'anger'
+        'speaker'=>'hikari'
     }
 
     res = Net::HTTP.post_form(endpoint, request_body)
@@ -23,8 +22,9 @@ class Speech
         File.binwrite(file_name, res.body)
         `aplay voice.wav`
         File.delete(file_name)
+        return "success"
       else
-        res.value
+        return res.body
     end
   end
 end

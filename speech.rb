@@ -19,9 +19,9 @@ class Speech
 
     case res
       when Net::HTTPSuccess
-        file_name = "docomo.wav"
+        file_name = "voice.wav"
         File.binwrite(file_name, res.body)
-        `afplay docomo.wav` # Linuxならaplayやmpg123を使う
+        `aplay voice.wav`
         File.delete(file_name)
       else
         res.value
